@@ -1,140 +1,223 @@
-
-.gigantic {
-	font-size: 110px;
-	line-height: 120px;
-	letter-spacing: -2px;
-}
-
-.huge, h1 {
-	font-size: 68px;
-	line-height: 72px;
-	letter-spacing: -1px;
-}
-
-.large, h2 {
-	font-size: 42px;
-	line-height: 48px;
-}
-
-.bigger, h3 {
-	font-size: 26px;
-	line-height: 36px;
-}
-
-.big, h4 {
-	font-size: 22px;
-	line-height: 30px;
-}
-
-body {
-	font: 16px/24px Georgia, serif;
-}
-
-.small, small {
-	font-size: 13px;
-	line-height: 18px;
-}
-
-/* Selection colours (easy to forget) */
-
-::selection 	 	{background: rgb(255,255,158);}
-::-moz-selection 	{background: rgb(255,255,158);}
-img::selection 		{background: transparent;}
-img::-moz-selection	{background: transparent;}
-body {-webkit-tap-highlight-color: rgb(255,255,158);}
+@import url(../../../../../fonts.googleapis.com/css@family=Open+Sans_3A300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+@import url(../../../../../fonts.googleapis.com/css@family=Dosis_3A200,300,400,500,600,700,800);
 
 
-
-/*		Default Layout: 992px. 
-		Gutters: 24px.
-		Outer margins: 48px.
-		Leftover space for scrollbars @1024px: 32px.
--------------------------------------------------------------------------------
-cols    1     2      3      4      5      6      7      8      9      10
-px      68    160    252    344    436    528    620    712    804    896    */
-
-body {
-	width: 896px;
-	padding: 72px 48px 84px;
-	background: url(../img/startup/intro-bg.jpg) center top no-repeat;
-	color: rgb(60,60,60);
-	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+.header-decoration{
+	background-image:url(../images/misc/top-strip.png);
+	background-repeat:repeat-x;
+	height:5px;
 }
 
 
-.container{
-	margin: 0px auto;
-	width:896px;
+.header img{
+	padding-top:20px;
+}
+
+.social-icons{
+	float:right;
+	margin-top:-40px;
+}
+
+.social-icons a{
+	float:left;
+	padding-left:10px;
+}
+
+.footer{
+	padding-top:20px;
+	background-image:url(../images/misc/body-footer-bg.png);
+	background-repeat:repeat;
+}
+
+.footer-text{
+	color:#FFFFFF;
+}
+
+.copyright-text{
+	font-size:10px;
+	color:#999;
+	margin-bottom:70px;
 }
 
 
+/*Navigation Submenus*/
 
-/*		Tablet Layout: 768px.
-		Gutters: 24px.
-		Outer margins: 28px.
-		Inherits styles from: Default Layout.
------------------------------------------------------------------
-cols    1     2      3      4      5      6      7      8
-px      68    160    252    344    436    528    620    712    */
+.navigation{
+	background-image:url(../images/misc/nav-strip.png);
+	background-repeat:repeat;
+	width:100%;
+	height:52px;
+	position:fixed;
+	bottom:0px;	
+	z-index:99999;
+}
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-	
-	body {
-		width: 712px;
-		padding: 48px 28px 60px;
-	}
+.nav-item:hover{background-color:rgba(255,255,255,0.3);}
+.nav-item-4:hover{background-color:rgba(255,255,255,0.3);}
+.nav-item-3:hover{background-color:rgba(255,255,255,0.3);}
+.submenu-icon-3:hover{background-color:rgba(255,255,255,0.3);}
+.submenu-icon-4:hover{background-color:rgba(255,255,255,0.3);}
+.submenu-icon-5:hover{background-color:rgba(255,255,255,0.3);}
+
+.nav-item{
+	width:20%;
+	float:left;
+	text-align:center;
+	font-family:'Open Sans', sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-position:center 6px;
+	background-repeat:no-repeat;
+	background-size:24px 24px;
+	height:52px;
+	padding-top:30px;
+	opacity:0.6;
+}
+
+.nav-item-4{
+	width:25%;
+	float:left;
+	text-align:center;
+	font-family:'Open Sans', sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-position:center 6px;
+	background-repeat:no-repeat;
+	background-size:24px 24px;
+	height:52px;
+	padding-top:30px;
+	opacity:0.6;
+}
+
+.nav-item-3{
+	width:33.3%;
+	float:left;
+	text-align:center;
+	font-family:'Open Sans', sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-position:center 6px;
+	background-repeat:no-repeat;
+	background-size:24px 24px;
+	height:52px;
+	padding-top:30px;
+	opacity:0.6;	
+}
+
+.active-nav{	background-color:rgba(255,255,255,0.3); color:#FFFFFF; opacity:1!important;}
+.home-nav{		background-image:url(../images/icon/misc/home.png);}
+.about-nav{		background-image:url(../images/icon/settings/cog2.png);}
+.gallery-nav{	background-image:url(../images/icon/media/image2.png);}
+.blog-nav{		background-image:url(../images/icon/tools/pencil.png);}
+.mail-nav{		background-image:url(../images/icon/misc/mail.png);}
+
+.menu-one{display:none;}
+.menu-two{display:none;}
+.menu-three{display:none;}
+.menu-four{display:none;}
+.menu-five{display:none;}
+
+
+.submenu-box{
+	background-color:#000000;
+	background-image:url(../images/misc/nav-strip.png);
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	z-index:999999;
 }
 
 
-
-/*		Mobile Layout: 320px.
-		Gutters: 24px.
-		Outer margins: 34px.
-		Inherits styles from: Default Layout.
----------------------------------------------
-cols    1     2      3
-px      68    160    252    */
-
-@media only screen and (max-width: 767px) {
-	
-	body {
-		width: 252px;
-		padding: 48px 34px 60px;
-	}
-	
+.submenu-icon-5{
+	width:20%;
+	float:left;
+	text-align:center;
+	font-family:'Open Sans', sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-position:center 6px;
+	background-repeat:no-repeat;
+	background-size:20px 22px;
+	height:52px;
+	padding-top:30px;
+	opacity:0.5;
 }
 
-
-
-/*		Wide Mobile Layout: 480px.
-		Gutters: 24px.
-		Outer margins: 22px.
-		Inherits styles from: Default Layout, Mobile Layout.
-------------------------------------------------------------
-cols    1     2      3      4      5
-px      68    160    252    344    436    */
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-	
-	body {
-		width: 436px;
-		padding: 36px 22px 48px;
-	}
-	
+.submenu-icon-4{
+	width:25%;
+	float:left;
+	text-align:center;
+	font-family:'Open Sans', sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-position:center 9px;
+	background-repeat:no-repeat;
+	background-size:20px 20px;
+	height:52px;
+	padding-top:32px;
+	opacity:0.5;
 }
 
-
-/*	Retina media query.
-	Overrides styles for devices with a 
-	device-pixel-ratio of 2+, such as iPhone 4.
------------------------------------------------    */
-
-@media 
-	only screen and (-webkit-min-device-pixel-ratio: 2),
-	only screen and (min-device-pixel-ratio: 2) {
-	
-	body {
-	
-	}
-	
+.submenu-icon-3{
+	width:33.3%;
+	float:left;
+	text-align:center;
+	font-family:'Open Sans', sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-position:center 9px;
+	background-repeat:no-repeat;
+	background-size:20px 20px;
+	height:52px;
+	padding-top:32px;
+	opacity:0.5;
 }
+
+.submenu-icon-2{
+	width:50%;
+	float:left;
+	text-align:center;
+	font-family:'Open Sans', sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-position:center 9px;
+	background-repeat:no-repeat;
+	background-size:20px 22px;
+	height:52px;
+	padding-top:32px;
+	opacity:0.5;
+}
+
+.closer-submenu{background-image:url(../images/icon/misc/accessdenied.png);}
+.others-submenu{background-image:url(../images/icon/misc/paperclip.png);}
+.jquery-submenu{background-image:url(../images/icon/power/power.png);}
+.typogr-submenu{background-image:url(../images/icon/misc/creatwrite.png);}
+.introd-submenu{background-image:url(../images/icon/misc/infoabout.png);}
+
+.filtrable-submenu{background-image:url(../images/icon/display/frames.png);}
+.swipeable-submenu{background-image:url(../images/icon/display/blockimages.png);}
+.onecolumn-submenu{background-image:url(../images/icon/media/image2.png);}
+.twocolumn-submenu{background-image:url(../images/icon/media/image3.png);}
+
+.call-submenu{background-image:url(../images/icon/communication/phonehook.png);}
+.mail-submenu{background-image:url(../images/icon/misc/mail.png);}
+.face-submenu{background-image:url(../images/icon/social/facebook.png);}
+.twet-submenu{background-image:url(../images/icon/social/twitter.png);}
+
+.post-submenu{background-image:url(../images/icon/misc/creatwrite.png);}
+.blog-submenu{background-image:url(../images/icon/misc/creatwrite.png);}
+
+
+
+
+
+
+
+
