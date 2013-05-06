@@ -907,7 +907,7 @@ table tr:hover td{
 
 /* The styles for the red button */
 .red-minimal {
-	color: #923c47;
+	color: #d10000;
 	border: 1px solid #d96d7c;
 	text-shadow: 1px 1px 1px #fdbcc7;
 	background-color: #f6677b;
@@ -1084,7 +1084,7 @@ table tr:hover td{
 
 /* The styles for the red button */
 .red {
-	color: #923c47;
+	color: #d10000;
 	border: 1px solid #d96d7c;
 	background-image: -moz-linear-gradient(#f997b0, #f6677b);
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6677b), to(#f997b0));
