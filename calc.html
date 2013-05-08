@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head.>
+	
+
+
+
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css"> 
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+ <script>
+        $(function () {
+            $("#slider-smokenumber").slider({
+                range: "min",
+                value: 20,
+                min: 1,
+                max: 60,
+                slide: function (event, ui) {
+                    $("#smokenumber").text(ui.value);
+                    calcSavings(ui.value, 0);
+                }
+            });
+            $("#slider-packvalue").slider({
+                range: "min",
+                value: 6,
+                min: 2,
+                max: 15,
+                slide: function (event, ui) {
+                    $("#packvalue").text("$" + ui.value);
+                    calcSavings(0, ui.value);
+                }
+            });
+            $('input:radio[name=eschoice]').click(function () { setesType(); calcSavings(); });
+            $("#packvalue").text("$" + $("#slider-packvalue").slider("value"));
+            $("#smokenumber").text($("#slider-smokenumber").slider("value"));
+            setesType();
+            calcSavings(0, 0);
+        });
+        function setesType() {
+            var val = parseInt($('input:radio[name=eschoice]:checked').val());
+            switch (val) {
+                //case 1: $('#estype').text('Standard'); break;      
+                //case 2: $('#estype').text('Extreme'); break;      
+                //case 3: $('#estype').text('Disposable'); break;      
+                default: break;
+            }
+        }
+        function calcSavings(a1, b1) {
+            var a = $("#slider-smokenumber").slider("value");
+            if (a1 > 0) a = a1;
+            var b = $("#slider-packvalue").slider("value");
+            if (b1 > 0) b = b1;
+
+            //calculating yearly expense 
+            //var A = Math.floor((365*a/20)*b);
+            var A = Math.floor((365 * a) * (b / 20));
+
+            $("#yearexpense").text("$" + A);
+            var B = 0;
+            var atype = parseInt($('input:radio[name=eschoice]:checked').val());
+            switch (atype) {
+                case 1:
+                    {
+                        var c1 = 1;
+                        B = Math.floor((365 * a) * (0.06));
+                    } break;
+                case 2:
+                    {
+                        var c2 = 1;
+                        B = Math.floor(365 * (a * 15 / 300) * c2);
+                    } break;
+                case 3:
+                    {
+                        var c3 = 10;
+                        B = Math.floor(365 * (a * 15 / 500) * c3);
+                    } break;
+                default: break;
+            }
+            $("#esexpense").text("$" + B);
+            //var C = (((b/20)*a)-(0.083 *a));
+            //var C = Math.round(C*100+((C*1000)%10>4?1:0))/100;
+            //$( "#savings" ).text( "$" + (A-B) );
+            $("#savings").text("$" + (A - B));
+        }
+    </script>
+
+<style>
+#savings{font-size:20px; font-weight:bold; color:#0C0;}
+
+</style>
+</head>
+<body>
+
+ 
+ <h3>See how much you can save with CIGIREX ?</h3>
+<div class="calc">
+            <div id="div1">
+              <div><br />
+                How many cigarettes do you smoke a day? <span id="smokenumber" style="color: #369; font-weight:bold;"><strong>12</strong></span></div>
+              <div id="slider-smokenumber" style="width: 360px; margin-top: 5px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                <div class="ui-slider-range ui-slider-range-min ui-widget-header" style="width:1%; "></div>
+                <a href="#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 1%;"></a></div>
+              <div style="margin-top: 20px;">How much do you pay for a pack of cigarettes? <span id="packvalue" style="color:#F00; font-weight:bold;"><strong>$6</strong></span></div>
+              <div id="slider-packvalue" style="width: 360px; margin-top: 5px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                <div class="ui-slider-range ui-slider-range-min ui-widget-header" style="width: 1%; "></div>
+                <a href="#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 1%; "></a></div>
+              <input name="eschoice" value="1" checked="checked" type="radio" style="display:none;" />
+              <div id="div2">
+                <div class="calc-result">Your Yearly Cigarette Expense: 
+					<span id="yearexpense" class="style2"><strong>$1314</strong></span></div>
+                <div class="calc-result">CIGIREX Yearly Cartridge Expense: <span id="esexpense">$328</span></div>
+            
+            
+                <div class="calc-result3"><span class="style1"><strong>By switching to CIGIREX, you would save about</strong></span> <span id="savings">$986</span><span class="style1"><strong> a year!</strong></span></div>
+                <div style="padding:10px 0px; clear:both; text-align:left;"></div>
+            
+                </div>
+              </div>
+            </div>
+</body>
+
+</html>

@@ -42,7 +42,19 @@
 
 /*  Account  */
 
+.calc-result{
+	margin-top:25px;
+	padding-bottom:5px;
+	line-height:21px;
+	font-size:18px;
+	border-bottom:1px #999 dashed;
+}
 
+.calc-result3{
+	margin-top:25px;
+	font-size:20px;
+	line-height:21px;
+}
 
 
 
@@ -136,6 +148,11 @@
 .gallery-nav{	background-image:url(../images/icon/media/image2.png);}
 .blog-nav{		background-image:url(../images/icon/tools/pencil.png);}
 .mail-nav{		background-image:url(../images/icon/misc/mail.png);}
+
+.hl2{		background-image:url(../images/icon/misc/link2.png);}
+.hl3{		background-image:url(../images/icon/misc/universalaccess.png);}
+.hl4{		background-image:url(../images/icon/misc/vault.png);}
+.hl5{		background-image:url(../images/icon/social/facebooklike.png);}
 
 .menu-one{display:none;}
 .menu-two{display:none;}

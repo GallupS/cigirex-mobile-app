@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+        <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#222222">
+
+
+        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+        <!--
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+        -->
+
+        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+        <!--
+        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+        -->
+
+<!-- Stylesheet Load -->
+<link href="css/style.css"				rel="stylesheet" 	type="text/css">
+<link href="css/framework-style.css" 	rel="stylesheet" 	type="text/css">
+<link href="css/framework.css" 			rel="stylesheet" 	type="text/css">
+<link href="css/icons.css"				rel="stylesheet" 	type="text/css">
+<link href="css/retina.css" 			rel="stylesheet" 	type="text/css" 	media="only screen and (-webkit-min-device-pixel-ratio: 2)" />
+<link href="css/jquery-ui-1.7.2.custom.css" rel="stylesheet"> 
+
+
+
+
+
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+ <script>
+        $(function () {
+            $("#slider-smokenumber").slider({
+                range: "min",
+                value: 20,
+                min: 1,
+                max: 60,
+                slide: function (event, ui) {
+                    $("#smokenumber").text(ui.value);
+                    calcSavings(ui.value, 0);
+                }
+            });
+            $("#slider-packvalue").slider({
+                range: "min",
+                value: 6,
+                min: 2,
+                max: 15,
+                slide: function (event, ui) {
+                    $("#packvalue").text("$" + ui.value);
+                    calcSavings(0, ui.value);
+                }
+            });
+            $('input:radio[name=eschoice]').click(function () { setesType(); calcSavings(); });
+            $("#packvalue").text("$" + $("#slider-packvalue").slider("value"));
+            $("#smokenumber").text($("#slider-smokenumber").slider("value"));
+            setesType();
+            calcSavings(0, 0);
+        });
+        function setesType() {
+            var val = parseInt($('input:radio[name=eschoice]:checked').val());
+            switch (val) {
+                //case 1: $('#estype').text('Standard'); break;      
+                //case 2: $('#estype').text('Extreme'); break;      
+                //case 3: $('#estype').text('Disposable'); break;      
+                default: break;
+            }
+        }
+        function calcSavings(a1, b1) {
+            var a = $("#slider-smokenumber").slider("value");
+            if (a1 > 0) a = a1;
+            var b = $("#slider-packvalue").slider("value");
+            if (b1 > 0) b = b1;
+
+            //calculating yearly expense 
+            //var A = Math.floor((365*a/20)*b);
+            var A = Math.floor((365 * a) * (b / 20));
+
+            $("#yearexpense").text("$" + A);
+            var B = 0;
+            var atype = parseInt($('input:radio[name=eschoice]:checked').val());
+            switch (atype) {
+                case 1:
+                    {
+                        var c1 = 1;
+                        B = Math.floor((365 * a) * (0.06));
+                    } break;
+                case 2:
+                    {
+                        var c2 = 1;
+                        B = Math.floor(365 * (a * 15 / 300) * c2);
+                    } break;
+                case 3:
+                    {
+                        var c3 = 10;
+                        B = Math.floor(365 * (a * 15 / 500) * c3);
+                    } break;
+                default: break;
+            }
+            $("#esexpense").text("$" + B);
+            //var C = (((b/20)*a)-(0.083 *a));
+            //var C = Math.round(C*100+((C*1000)%10>4?1:0))/100;
+            //$( "#savings" ).text( "$" + (A-B) );
+            $("#savings").text("$" + (A - B));
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+
+
+<div class="header-decoration"></div>
+
+<div class="content">
+	<div class="header container">
+    	<div class="logo">
+        	<img src="images/misc/logo.png" width="63" class="replace-2x" alt="img">
+        </div>
+    	
+    </div>
+  
+	
+
+    
+  
+    <div class="container no-bottom">   
+        
+	<div class="container no-bottom shadow">
+           <h1 class="center-text">See how much you can save with CIGIREX vs. Cigarettes ?</h1>
+           <p  class="center-text italic">
+           
+        </div>
+        
+        <div class="decoration"></div>
+
+                  
+<h3></h3>
+<div class="calc">
+           
+           
+              <div>How many cigarettes do you smoke a day? <span id="smokenumber" class="black"><strong>12</strong></span></div>
+              
+              
+              
+              
+              
+              <div id="slider-smokenumber" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+              
+              
+              
+              
+              <div class="ui-slider-range ui-slider-range-min ui-widget-header"></div>
+                
+                
+              <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a></div>
+             
+             <div class="decoration"></div>
+             
+              <div>How much do you pay for a pack of cigarettes? <span id="packvalue" class="black"><strong>$6</strong></span></div>
+              
+              <div id="slider-packvalue" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                <div class="ui-slider-range ui-slider-range-min ui-widget-header"></div>
+                
+                <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a></div>
+              
+              
+              <div class="decoration"></div>
+              
+              <input name="eschoice" value="1" checked="checked" type="radio" style="display:none;" />
+             
+                
+                <div class="calc-result">Your Yearly Cigarette Expense: 
+					<span id="yearexpense" class="yellow"><strong>$1314</strong></span>
+                </div>
+                
+                
+                <div class="calc-result">CIGIREX Yearly CIGIREX Expense: <span id="esexpense" class="green">$328</span></div>
+            
+            	
+                <div class="calc-result3">
+                	<span><strong>By switching to CIGIREX, you would save about</strong></span> 
+                    <span id="savings" class="green">$986</span><span class="style1"><strong> a year!</strong></span>
+                </div>
+               
+            
+               
+              </div>
+            </div>   
+    
+    
+ 
+ 
+    
+</div>
+
+
+<!--
+<div class="footer">
+    <p class="center-text copyright-text">Copyright 2013. CIGIREX Electronic Cigarettes <a href="#" class="go-up">Top &uarr;</a></p>
+</div>
+-->
+
+
+
+
+<div class="submenu-box menu-four">
+ <a href="http://cigirex.com/shop/" class="submenu-icon-5">Order</a> 
+	<a href="909 451 0750" 	 class="call-submenu submenu-icon-5">Call</a>
+    <a href="mailto:customercare@cigirex.com" class="mail-submenu submenu-icon-5">Support</a>
+    <a href="mailto:sales@cigirex.com" class="mail-submenu submenu-icon-5">Sales</a>
+    <a href="#" 		class="closer-submenu submenu-icon-3">Close</a>
+</div>
+
+<div class="submenu-box menu-five">
+    <a href="http://www.facebook.com/cigirex" class="face-submenu submenu-icon-5">Facebook</a>
+    <a href="https://twitter.com/cigirex" 		   class="twet-submenu submenu-icon-5">Twitter</a>
+    <a href="#" 								   class="closer-submenu submenu-icon-5">Close</a>
+</div>
+
+
+<div class="navigation">
+	<a href="index.html"		class="nav-item home-nav active-nav">Home</a>
+    <a href="account.html"      class="nav-item hl3">Info</a>
+    <a href="comp.html"         class="nav-item hl2">CIGIREX</a>
+    <a href="#" id="menu-four"	class="nav-item hl4">Products</a>
+    <a href="#" id="menu-five"  class="nav-item hl5">Social</a>
+</div>
+
+</body>
+</html>
